@@ -7,16 +7,14 @@ router.get("/", function(req, res) {
 });
 /* POST */
 router.get("/login", function(req, res) {
-  res.json([
-    { username: "test", password: "test001" },
-    { username: "test", password: "test002" }
-  ]);
-  console.log("success-login");
+  res.send("GET request to the login");
 });
-
 router.post("/login", function(req, res) {
-  console.log("success-post");
-  console.log(req.body);
+  if (req.body.username === "test" && req.body.password === "test") {
+    res.status(200, console.log(req.body)).end();
+  } else {
+    res.status(403, console.log(req.body)).end();
+  }
 });
 
 module.exports = router;
